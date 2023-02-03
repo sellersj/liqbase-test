@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="chrlembeck">
+        <createTable tableName="test-table">
+            <column name="id" type="integer" ><constraints primaryKey="true" primaryKeyName="pk_test_table" nullable="false"/></column>
+            <column name="col1" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col2" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col3" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col4" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col5" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col6" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col7" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col8" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col9" type="nvarchar2(80)"><constraints nullable="false"/></column>
+            <column name="col10" type="nvarchar2(80)"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="chrlembeck">
+        <loadData tableName="test-table" file="/db/test-table.csv"/>
+    </changeSet>
+</databaseChangeLog>
