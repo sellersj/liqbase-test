@@ -17,9 +17,13 @@
     <dependency>
       <groupId>org.liquibase</groupId>
       <artifactId>liquibase-core</artifactId>
+      <!-- this won't work -->
+      <!--      <version>3.5.5</version>-->
+      <!-- these will work -->
       <!--      <version>3.9.0</version>-->
+      <version>3.10.3</version>
       <!--      <version>4.4.3</version>-->
-      <version>4.19.0</version>
+      <!--      <version>4.19.0</version>-->
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
