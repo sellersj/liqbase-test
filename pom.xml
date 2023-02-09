@@ -9,6 +9,12 @@
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.7.7</version>
   </parent>
+  <properties>
+    <surefireArgs>-XX:+HeapDumpOnOutOfMemoryError</surefireArgs>
+    <surefireMemoryArgs>-Xmx512m -Xms128m</surefireMemoryArgs>
+    <!-- Moved "argLine" from SureFire config to Properties for Sonar JaCoCo to run properly. -->
+    <argLine>${surefireArgs} ${surefireMemoryArgs}</argLine>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -21,8 +27,8 @@
       <!--      <version>3.5.5</version>-->
       <!-- these will work -->
       <!--      <version>3.9.0</version>-->
-      <version>3.10.3</version>
-      <!--      <version>4.4.3</version>-->
+      <!--      <version>3.10.3</version>-->
+      <version>4.4.3</version>
       <!--      <version>4.19.0</version>-->
     </dependency>
     <dependency>
@@ -30,4 +36,19 @@
       <artifactId>h2</artifactId>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+        <configuration>
+          <!-- 2hrs = 2hr * 60min * 60sec = 7200 -->
+          <forkedProcessTimeoutInSeconds>7200</forkedProcessTimeoutInSeconds>
+          <forkMode>once</forkMode>
+          <runOrder>hourly</runOrder>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
